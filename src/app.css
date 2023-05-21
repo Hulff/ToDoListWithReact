@@ -1,0 +1,224 @@
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 1px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #00000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffffff8c;
+  border-radius: 100vh;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #646464;
+}
+/* loading animation */
+.lds-ring {
+  margin-top: 3em;
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 4em;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 3em;
+  height: 3em;
+  margin: 1em;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/*  */
+@keyframes increase {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 24em;
+  }
+}
+
+.container {
+  max-width: 14em;
+  margin: 3em auto;
+  overflow: hidden;
+  border: 2px solid rgb(27, 208, 249);
+  padding: 30px;
+  border-radius: 0.6em;
+  height: 0;
+  animation: increase 2s 0.3s forwards ;
+}
+.container > h1 {
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+}
+.container > h2 {
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 1em;
+}
+.container-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container-login-input {
+  border-radius: 0.3em;
+  color: white;
+  border: 1.5px solid rgb(27, 208, 249);
+  width: 94%;
+  padding: 3% 3%;
+  background: none;
+  font-size: 0.7em;
+  text-align: start;
+  margin-bottom: 1em;
+}
+.container > .container-task-add > input {
+  border-radius: 0.3em;
+  color: white;
+  border: 1.5px solid rgb(27, 208, 249);
+  width: 54%;
+  padding: 3% 3%;
+  margin-right: 5%;
+  background: none;
+  font-size: 0.7em;
+  text-align: start;
+}
+.button-add {
+  color: white;
+  background: rgb(27, 208, 249);
+  border: 1.5px solid rgb(27, 208, 249);
+  border-radius: 0.3em;
+  padding: 3% 5%;
+  font-size: 0.7em;
+  font-weight: 600;
+  transition: color 0.5s, background 0.5s, border 0.5s;
+}
+.button-add:hover {
+  cursor: pointer;
+  color: rgb(27, 208, 249);
+  background: white;
+  border: 1.5px solid rgb(255, 255, 255);
+}
+.container-task-add {
+  margin-bottom: 20.5em;
+  transition: margin-bottom 1.5s;
+}
+.task-container {
+  display: flex;
+  border-radius: 0.3em;
+  color: white;
+  padding: 4% 4%;
+  width: 92%;
+  margin: 5% 0px;
+  background: #2e2e2e;
+  transition: filter 0.6s, background 0.6s;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.task-container:hover {
+  filter: brightness(0.7);
+}
+.task-container > h3 {
+  width: 100%;
+  font-size: 0.7em;
+  font-weight: 400;
+  margin: 0;
+}
+.btn-remove-container {
+  display: flex;
+  align-items: center;
+}
+.remove-task-btn,
+.about-task-btn {
+  border-radius: 0.4em;
+  padding: 0.4em 0.6em;
+  color: white;
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 0.6em;
+  transition: background 0.6s;
+  display: flex;
+}
+
+.remove-task-btn:hover,
+.about-task-btn:hover {
+  background: #262626;
+}
+
+.task-container > h3:hover,
+.remove-task-btn:hover,
+.about-task-btn:hover {
+  cursor: pointer;
+}
+
+.container-task-info {
+  background: #323232;
+  border-radius: 1vh;
+  padding: 2% 6% 9% 6%;
+  margin-top: 0.6em;
+}
+.container-task-info > p {
+  margin: 0;
+  padding: 0;
+}
+.container-task-info > p:nth-child(1) {
+  color: rgb(27, 208, 249);
+  font-size: 1em;
+  font-weight: 500;
+}
+.container-task-info > p:nth-child(2) {
+  text-align: justify;
+  font-size: 0.6em;
+  color: white;
+}
+.link-button {
+  background: none;
+  font-size: 0.7em;
+  color: white;
+  margin: 2em 0;
+  width: 100%;
+  text-align: center;
+  transition: color 1s;
+  text-decoration: none;
+  border: none;
+}
+.link-button:hover {
+  color: rgb(120, 120, 120);
+  cursor: pointer;
+}
