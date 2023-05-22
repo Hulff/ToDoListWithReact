@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef,useContext } from "react";
 import {useCookies } from "react-cookie";
 import Button from "./button";
 import LinkButton from "./linkButton";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/userContext";
 
 
 const Login = ({ handleTaskClear, handleUserData }) => {
   const [cookies] = useCookies(["username"]);
+  const {setData} = useContext(UserContext)
   const navigate = useNavigate();
   const [userInputData, setInputdata] = useState("");
   const passInputData = useRef("");
@@ -29,6 +31,7 @@ const Login = ({ handleTaskClear, handleUserData }) => {
       return;
     }
     handleUserData(userInputData);
+    setData([])
     navigate(`/tasks`);
   }
   function goToRegister() {

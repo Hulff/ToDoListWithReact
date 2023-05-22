@@ -1,17 +1,17 @@
 import { useState, createContext } from "react";
 
 export const UserContext = createContext({
-  user: "",
-  setUser: () => {},
+  taskData: [],
+  setData: () => {},
 });
 const UserContextProvider = ({ children }) => {
-  const [user, setCurrentUser] = useState("");
-  const setUser = (username) => {
-   return setCurrentUser(username);
+  const [taskData, setTasksData] = useState([]);
+  const setData = (taskList) => {
+   return setTasksData(taskList);
   };
   return (
     <>
-      <UserContext.Provider value={{ user, setUser }}>
+      <UserContext.Provider value={{ taskData, setData}}>
         {children}
       </UserContext.Provider>
       ;

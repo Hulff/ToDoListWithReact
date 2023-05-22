@@ -113,12 +113,13 @@
   border: 1.5px solid rgb(27, 208, 249);
   width: 54%;
   padding: 3% 3%;
-  margin-right: 5%;
+  margin-right: 5.5%;
   background: none;
   font-size: 0.7em;
   text-align: start;
 }
 .button-add {
+  width: 33%;
   color: white;
   background: rgb(27, 208, 249);
   border: 1.5px solid rgb(27, 208, 249);

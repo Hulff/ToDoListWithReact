@@ -1,9 +1,6 @@
-import React, { useReducer} from "react";
+import React, { useEffect, useReducer,useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-import {
-  Routes,
-  Route
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { writeTaskData, deleteTaskData } from "./services/firebase";
 import Tasks from "./components/tasks";
@@ -12,7 +9,7 @@ import AddTask from "./components/addTask";
 import TaskInfo from "./components/taskInfo";
 import CreateAcc from "./components/createAcc";
 import "./app.css";
-import UserContextProvider from "./context/userContext";
+import {UserContext} from "./context/userContext";
 
 const taskReducer = (state, action) => {
   switch (action.type) {
@@ -21,6 +18,7 @@ const taskReducer = (state, action) => {
         ...state,
         {
           task: action.payload.taskTitle,
+          info: action.payload.taskTextData,
           id: action.payload.id,
           completed: false,
         },
@@ -44,22 +42,27 @@ const taskReducer = (state, action) => {
 };
 
 const App = () => {
+  const {setData} = useContext(UserContext)
   const [cookies, setCookie] = useCookies(["username"]);
   const [tasks, dispatch] = useReducer(taskReducer, []);
+  useEffect(()=>{
+    setData(tasks)
+  },[tasks])
   //adicionar componente alerta
   function alert(alertText) {}
-  function handleTaskAdd(taskTitle, user) {
+  function handleTaskAdd(taskTitle, taskTextData, user) {
     const newTask = {
       task: taskTitle,
+      info: taskTextData,
       id: uuidv4(),
       completed: false,
     };
-    dispatch({ type: "ADD_TASK", payload: { taskTitle, id: newTask.id } });
-    writeTaskData(user, newTask.id, taskTitle, false);
+    dispatch({ type: "ADD_TASK", payload: { taskTitle,taskTextData, id: newTask.id } });
+    writeTaskData(user, taskTextData, newTask.id, taskTitle, false);
   }
 
   function handleUserData(name) {
-    setCookie("username", name, { path: "/",maxAge:172800 });
+    setCookie("username", name, { path: "/", maxAge: 172800 });
   }
   function handleTaskDelete(taskId, user) {
     dispatch({ type: "DELETE_TASK", payload: { taskId } });
@@ -78,63 +81,63 @@ const App = () => {
   function handleTaskClick(taskId, user) {
     dispatch({ type: "TOGGLE_TASK", payload: { taskId } });
     const task = tasks.find((task) => task.id === taskId);
-    writeTaskData(user, task.id, task.task, !task.completed);
+    writeTaskData(user, task.info, task.id, task.task, !task.completed);
   }
 
   return (
-      <div className="container">
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <>
-                <Login
-                  handleTaskClear={handleTaskClear}
-                  handleUserData={handleUserData}
-                ></Login>
-              </>
-            }
-          />
-          <Route
-            exact
-            path="/createAccount"
-            element={
-              <>
-                <CreateAcc handleTaskClear={handleTaskClear}></CreateAcc>
-              </>
-            }
-          />
-          <Route
-            exact
-            path="/tasks"
-            element={
-              <>
-                <h1>Minhas Tarefas</h1>
-                <AddTask
-                  setDbTaskData={setDbTaskData}
-                  handleTaskAdd={handleTaskAdd}
-                />
-                <Tasks
-                  tasks={tasks}
-                  handleTaskClick={handleTaskClick}
-                  handleTaskDelete={handleTaskDelete}
-                />
-              </>
-            }
-          />
-          <Route
-            exact
-            path="/Info/:title"
-            element={
-              <>
-                <h1>Detalhe da Tarefa</h1>
-                <TaskInfo></TaskInfo>
-              </>
-            }
-          />
-        </Routes>
-      </div>
+    <div className="container">
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <>
+              <Login
+                handleTaskClear={handleTaskClear}
+                handleUserData={handleUserData}
+              ></Login>
+            </>
+          }
+        />
+        <Route
+          exact
+          path="/createAccount"
+          element={
+            <>
+              <CreateAcc handleTaskClear={handleTaskClear}></CreateAcc>
+            </>
+          }
+        />
+        <Route
+          exact
+          path="/tasks"
+          element={
+            <>
+              <h1>Minhas Tarefas</h1>
+              <AddTask
+                setDbTaskData={setDbTaskData}
+                handleTaskAdd={handleTaskAdd}
+              />
+              <Tasks
+                tasks={tasks}
+                handleTaskClick={handleTaskClick}
+                handleTaskDelete={handleTaskDelete}
+              />
+            </>
+          }
+        />
+        <Route
+          exact
+          path="/Info/:title/:info"
+          element={
+            <>
+              <h1>Detalhe da Tarefa</h1>
+              <TaskInfo></TaskInfo>
+            </>
+          }
+        />
+      </Routes>
+    </div>
   );
 };
 

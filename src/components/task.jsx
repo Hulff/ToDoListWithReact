@@ -8,7 +8,7 @@ const Task = ({ taskObj, handleTaskClick, handleTaskDelete }) => {
   const [cookies] = useCookies(["username"]);
   const navigate = useNavigate()
   function handleInfoClick() {
-    navigate(`/info/${taskObj.task}`)
+    navigate(`/info/${taskObj.task}/${taskObj.info}`)
   }
   return (
     <div

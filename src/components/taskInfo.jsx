@@ -16,10 +16,7 @@ const TaskInfo = () => {
       <div className="container-task-info">
         <p>{params.title}</p>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-          doloremque omnis ipsum sequi distinctio officiis porro, libero dolores
-          saepe est totam sint, voluptate id quo numquam amet sunt. Doloribus,
-          iusto?
+          {params.info}
         </p>
       </div>
     </>

@@ -14,11 +14,12 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 
-export function writeTaskData(userId, id, task, stts) {
+export function writeTaskData(userId,textData, id, task, stts) {
   const db = database;
   set(ref(db, "tasks/" + userId + "/" + id), {
     id: id,
     task: task,
+    info: textData,
     completed: stts,
   });
 }
@@ -36,6 +37,7 @@ export async function getTaskData(userId) {
     names.forEach((name) => {
       let obj = {};
       obj = { ...obj, task: data[name].task };
+      obj = { ...obj, info: data[name].info };
       obj = { ...obj, id: data[name].id };
       obj = { ...obj, completed: data[name].completed };
       finalData = [...finalData, obj];
