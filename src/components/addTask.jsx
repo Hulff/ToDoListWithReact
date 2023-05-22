@@ -76,7 +76,7 @@ const AddTask = ({ handleTaskAdd, setDbTaskData }) => {
   function showTaskInfoTextArea() {
     if (inputData == "") {
       document.getElementById("taskAddInput").placeholder =
-        "Você precisa dar um nome à tarefa";
+        "Você precisa dar um nome";
       return;
     }
     txtArea.hidden = false;

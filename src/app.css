@@ -118,6 +118,9 @@
   font-size: 0.7em;
   text-align: start;
 }
+.container > .container-task-add > input::placeholder {
+  font-size: 0.9em;
+}
 .button-add {
   width: 33%;
   color: white;
