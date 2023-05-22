@@ -77,7 +77,7 @@
   padding: 30px;
   border-radius: 0.6em;
   height: 0;
-  animation: increase 2s 0.3s forwards ;
+  animation: increase 2s 0.3s forwards;
 }
 .container > h1 {
   width: 100%;
@@ -154,10 +154,12 @@
   filter: brightness(0.7);
 }
 .task-container > h3 {
-  width: 100%;
   font-size: 0.7em;
   font-weight: 400;
+  width: 100%;
   margin: 0;
+  display: flex;
+  align-items: center;
 }
 .btn-remove-container {
   display: flex;
