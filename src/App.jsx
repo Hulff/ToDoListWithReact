@@ -1,7 +1,6 @@
 import React, { useReducer} from "react";
 import { v4 as uuidv4 } from "uuid";
 import {
-  BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
@@ -83,7 +82,6 @@ const App = () => {
   }
 
   return (
-    <Router>
       <div className="container">
         <Routes>
           <Route
@@ -137,7 +135,6 @@ const App = () => {
           />
         </Routes>
       </div>
-    </Router>
   );
 };
 
