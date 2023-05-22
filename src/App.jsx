@@ -59,7 +59,7 @@ const App = () => {
   }
 
   function handleUserData(name) {
-    setCookie("username", name, { path: "/" });
+    setCookie("username", name, { path: "/",maxAge:172800 });
   }
   function handleTaskDelete(taskId, user) {
     dispatch({ type: "DELETE_TASK", payload: { taskId } });

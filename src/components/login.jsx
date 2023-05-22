@@ -11,7 +11,7 @@ const Login = ({ handleTaskClear, handleUserData }) => {
   const [userInputData, setInputdata] = useState("");
   const passInputData = useRef("");
   useEffect(() => {
-    if (cookies.username !== "" || null | undefined) {
+    if (cookies.username !== "" || null || undefined) {
       setInputdata(cookies.username);
     }
   }, []);
@@ -24,7 +24,7 @@ const Login = ({ handleTaskClear, handleUserData }) => {
     // logar
 
     // pegar dados do usuario
-    if (userInputData === "" || null | undefined) {
+    if (userInputData === "" || null || undefined) {
       //alertar
       return;
     }
