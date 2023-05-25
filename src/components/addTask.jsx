@@ -64,14 +64,13 @@ const AddTask = ({ handleTaskAdd, setDbTaskData }) => {
   function handleClick() {
     txtArea.style.animation =
       "1s ease 0s 1 normal forwards running hideTextArea";
-    setTimeout(() => {
-      txtArea.hidden = true;
-    }, 1200);
     showTaskBtn.hidden = false;
     saveTaskBtn.hidden = true;
     handleTaskAdd(inputData, textData, cookies.username);
     setInputdata("");
-    setTextdata("");
+    setTimeout(() => {
+      txtArea.value = "";
+    }, 1000);
   }
   function showTaskInfoTextArea() {
     if (inputData == "") {
@@ -79,7 +78,7 @@ const AddTask = ({ handleTaskAdd, setDbTaskData }) => {
         "Você precisa dar um nome";
       return;
     }
-    txtArea.hidden = false;
+    // txtArea.hidden = false;
     txtArea.style.animation =
       "1s ease 0s 1 normal forwards running showTextArea";
     showTaskBtn.hidden = true;
@@ -104,7 +103,6 @@ const AddTask = ({ handleTaskAdd, setDbTaskData }) => {
       <div id="taskInfoDiv" className="task-info-container">
         <textarea
           onChange={handleTextChange}
-          hidden
           id="taskInfoTxtArea"
           placeholder="Adicione informações sobre a tarefa"
         ></textarea>
