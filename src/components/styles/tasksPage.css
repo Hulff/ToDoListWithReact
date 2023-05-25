@@ -3,25 +3,29 @@
     height: 0em;
     margin-top: 0em;
     padding: 0em;
+    border: 0px solid rgb(27, 208, 249);
   }
   100% {
     height: 5em;
     margin-top: 1em;
     padding: 0.5em;
+    border: 2px solid rgb(27, 208, 249);
   }
 }
 @keyframes hideTextArea {
   0% {
     height: 5em;
-    margin-top: 1em;
+    margin-top: 0.5em;
     padding: 0.5em;
     opacity: 1;
+    border: 2px solid rgb(27, 208, 249);
   }
   100% {
     height: 0em;
-    margin-top: 0.5em;
+    margin-top: 0em;
     padding: 0em;
     opacity: 0;
+    border: 0px solid rgb(27, 208, 249);
   }
 }
 .task-info-container {

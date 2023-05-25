@@ -66,7 +66,7 @@ const AddTask = ({ handleTaskAdd, setDbTaskData }) => {
       "1s ease 0s 1 normal forwards running hideTextArea";
     setTimeout(() => {
       txtArea.hidden = true;
-    }, 1000);
+    }, 1200);
     showTaskBtn.hidden = false;
     saveTaskBtn.hidden = true;
     handleTaskAdd(inputData, textData, cookies.username);
